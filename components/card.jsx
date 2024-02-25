@@ -1,13 +1,15 @@
 import { Component } from "react";
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
 
 class Card extends Component{
     render(){
         return(
-            <View style={styles.container}>
-                {this.props.data["image_url"] != undefined && <Image source={{uri: this.props.data["image_url"]}} style={styles.image} alt="ARTICLE IMAGE"/>}
-                <Text style={styles.text}>{this.props.data["title"]}</Text>
-            </View>
+            <TouchableOpacity onPress={() => {this.props.openArticle(this.props.data["url"])}}>
+                <View style={styles.container}>
+                    {this.props.data["urlToImage"] != undefined && <Image source={{uri: this.props.data["urlToImage"]}} style={styles.image} alt="ARTICLE IMAGE"/>}
+                    <Text style={styles.text}>{this.props.data["title"]}</Text>
+                </View>
+            </TouchableOpacity>
         )
     }
 }
